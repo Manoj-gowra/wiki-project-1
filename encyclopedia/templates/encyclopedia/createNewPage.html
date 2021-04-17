@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+New Page
+{% endblock %}
+{% block body %}
+    {% if code %}
+    <div class="alert alert-danger" role="alert">
+        It's already existed.So please use another title
+      </div>
+    {% endif %}
+    <div class= "mb-3">
+    <form action="{% url 'createNewPage' %}" method='post'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <center>
+            <button type="submit" class="btn btn-primary btn-sm" style="margin: 1rem 3rem 1rem 3rem;">Submit</button>
+            <a href="{% url 'index' %}" class="btn btn-danger btn-sm" style="margin: 1rem 3rem 1rem 3rem;">Cancel</a>
+        </center>
+    </form>
+    </div>
+{% endblock %}
